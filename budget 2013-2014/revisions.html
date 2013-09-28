@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+
+  var container = document.getElementById('budget');
+  var chart = new google.visualization.AreaChart(container);
+  var dataTable = new google.visualization.arrayToDataTable([
+          ['Budget', 'Fonctionnement', 'Levée de fonds', 'Programmes', 'Salaires/RH'],
+          ['Initial',	167400, 71030, 312750, 542533],
+          ['Juin 2013', 125800, 42430, 200950, 466842],
+          ['Sept 2013', 100560, 42430, 170150, 376321],
+        ]);
+
+
+
+       var options = {
+          title: 'Evolution des dépenses dans le Budget 2013-2014 (en fonction des révisions)',
+          hAxis: {title: 'Révision',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+          isStacked: true
+        };
+
+  chart.draw(dataTable, options);
+}
+
+		</script>
+	</head>
+	<body>
+		<div id="budget" style="width: 900px; height: 600px;"></div>
+	</body>
+<html>
