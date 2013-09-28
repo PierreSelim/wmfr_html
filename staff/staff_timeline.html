@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
+       'version':'1','packages':['timeline']}]}"></script>
+<script type="text/javascript">
+
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+
+  var container = document.getElementById('staff');
+  var chart = new google.visualization.Timeline(container);
+  var dataTable = new google.visualization.DataTable();
+  dataTable.addColumn({ type: 'string', id: 'Staff' });
+  dataTable.addColumn({ type: 'string', id: 'Position' });
+  dataTable.addColumn({ type: 'date', id: 'Start' });
+  dataTable.addColumn({ type: 'date', id: 'End' });
+  dataTable.addRows([
+	[ 'Bastien Guerry', 'Chargé de mission', new Date(2010,01,15), new Date(2011, 02, 11)],
+	[ 'Carol Ann O\'Hare', 'Recherche et éducation', new Date(2011,05,20), new Date()],
+	[ 'Adrienne Alix', 'Directrice des programmes', new Date(2011,06,04), new Date()],
+	[ 'Sylvain Boissel', 'Chargé de mission communauté et technologie', new Date(2011,07,15), new Date(2013,06,13)],
+	[ 'Sylvain Boissel', 'Chargé de mission technologie', new Date(2013,06,14), new Date()],
+	[ 'Julien Fayolle', 'Chef de projet Levée de fonds', new Date(2011,08,15), new Date(2012,01,14)],
+	[ 'Thierry Coudray', 'Directeur exécutif', new Date(2012,02,15), new Date(2012,11,14) ],
+	[ 'Sébastien Baijard', 'Chargé de mission levée de fonds', new Date(2012,09,08), new Date()],
+	[ 'Nadia El Moussaoui', 'Assistante administrative', new Date(2013,00,21), new Date()],
+	[ 'Nathalie Martin', 'Directrice exécutive', new Date(2013,09,01), new Date(2013, 09, 01)]
+]);
+
+  var options = {
+    timeline: { colorByRowLabel: true,
+				rowLabelStyle: {fontName: 'Roboto', fontSize: 10},
+                barLabelStyle: { fontName: 'Roboto', fontSize: 10 } },
+	legend: { textStyle: {fontName: 'Roboto', fontSize: 10} }
+  };
+
+  chart.draw(dataTable, options);
+}
+
+		</script>
+	</head>
+	<body>
+		<div id="staff" style="width: 900px; height: 600px;"></div>
+	</body>
+<html>
