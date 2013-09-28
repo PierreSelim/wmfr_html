@@ -9,7 +9,8 @@ google.setOnLoadCallback(drawChart);
 function drawChart() {
 
   var container = document.getElementById('budget');
-  var chart = new google.visualization.AreaChart(container);
+  var chart 	= new google.visualization.AreaChart(container);
+  var chartP	= new google.visualization.AreaChart(document.getElementById('programmes'));
   var dataTable = new google.visualization.arrayToDataTable([
           ['Budget', 'Fonctionnement', 'Levée de fonds', 'Programmes', 'Salaires/RH'],
           ['Initial',	167400, 71030, 312750, 542533],
@@ -17,6 +18,12 @@ function drawChart() {
           ['Sept 2013', 100560, 42430, 170150, 376321],
         ]);
 
+  var dataP		= google.visualization.arrayToDataTable([
+          ['Budget', 'Développement territorial', 'Education', 'Recherche', 'GLAM', 'Francophonie et langues de France', 'Sémantique', 'Communauté', 'Sensibilisation', 'Communication', 'Europeana', 'Technique', 'Partenaires associatifs', 'Mouvement Wikimedia'],
+          ['Initial',	22750, 27300, 19150, 7800, 92500, 16000, 33000, 5650, 12700, 30900, 20000, 2000, 23000],
+          ['Juin 2013', 17100, 18200, 5450,	5000, 32000, 16000, 31000, 2500, 12700, 30000, 15000, 1000, 15000],
+          ['Sept 2013', 17100, 11200, 1650, 5000, 30000, 16000, 30750, 2500, 12700, 30000, 3000, 1000, 17000],
+        ]);
 
 
        var options = {
@@ -26,12 +33,21 @@ function drawChart() {
           isStacked: true
         };
 
+   var optionsP = {
+          title: 'Evolution des dépenses programmes dans le Budget 2013-2014 (en fonction des révisions)',
+          hAxis: {title: 'Révisions',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+          isStacked: true
+        };
+
   chart.draw(dataTable, options);
+  chartP.draw(dataP, optionsP)
 }
 
 		</script>
 	</head>
 	<body>
-		<div id="budget" style="width: 900px; height: 600px;"></div>
+		<div id="budget" style="width: 900px; margin: auto; height: 600px;"></div>
+		<div id="programmes" style="width: 900px; margin: auto; height: 600px;"></div>
 	</body>
 <html>
