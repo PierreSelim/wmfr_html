@@ -3,6 +3,7 @@ WMFR html
 
 A set of web pages about Wikimedia France:
 - budget 2013-2014
+- staff page
 
 Authors
 -------
