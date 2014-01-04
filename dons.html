@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<title>Stats des dons</title>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+			google.load("visualization", "1", {packages:["corechart"]});
+			google.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+				    ['Mois', 'Nombre de dons', 'Dons'],
+				    ['Juillet', 	87, 4009],
+				    ['Aout', 		303, 4457],
+				    ['Septembre', 	857, 30813],
+				    ['Octobre', 	735, 26684],
+				    ['Novembre', 	359, 15382],
+				    ['Decembre', 	3013, 156839],
+				    ['Janvier',	 	0, 0],
+				    ['Fevrier', 	0, 0],
+				    ['Mars', 		0, 0],
+				    ['Avril',		0, 0],
+				    ['Mai', 		0, 0],
+				    ['Juin', 		0, 0],
+				]);
+				
+				var data1213 = google.visualization.arrayToDataTable([
+				    ['Mois', 'Nombre de dons', 'Dons'],
+				    ['Juillet', 	70, 4003],
+				    ['Aout', 		46, 1699],
+				    ['Septembre', 	52, 2065],
+				    ['Octobre', 	382, 12849],
+				    ['Novembre', 	13086, 380845],
+				    ['Decembre', 	44495, 1216239],
+				    ['Janvier',	 	839, 24213],
+				    ['Fevrier', 	134, 5195],
+				    ['Mars', 		191, 6384],
+				    ['Avril',		148, 5860],
+				    ['Mai', 		114, 3452],
+				    ['Juin', 		88, 2493],
+				]);
+
+				var eurosFormatter = new google.visualization.NumberFormat({
+					suffix: '&euro;',
+					fractionDigits: 0,
+					groupingSymbol: '&nbsp;',
+					pattern: '#,###'
+				});
+				
+				eurosFormatter.format(data, 2);
+				eurosFormatter.format(data1213, 2)
+
+				var options = {
+					title: 'Dons 2013-2014 (dons.wikimedia.fr)',
+					curveType: 'function',
+					vAxes: [
+						{title: 'Dons (Euros)', logScale: false, format: '#,###'},
+						{title: 'Nombre de dons', gridlines: { color: 'transparent' }, viewWindow: {min: 0}}
+					],
+					series: [
+						{targetAxisIndex: 1},
+						{type: 'bars', targetAxisIndex: 0},
+					]
+				};
+
+				var options1213 = {
+					title: 'Dons 2012-2013 (dons.wikimedia.fr)',
+					curveType: 'function',
+					vAxes: [
+						{title: 'Dons (Euros) / logscale', logScale: true, format: '#,###'},
+						{title: 'Nombre de dons', gridlines: { color: 'transparent' }, viewWindow: {min: 0}, logScale: true}
+					],
+					series: [
+						{targetAxisIndex: 1},
+						{type: 'bars', targetAxisIndex: 0},
+					]
+				};
+
+				var chart = new google.visualization.LineChart(document.getElementById('stats'));
+				chart.draw(data, options);
+				var chart1213 = new google.visualization.LineChart(document.getElementById('stats1213'));
+				chart1213.draw(data1213, options1213);
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id="stats" style="width: 600px; margin: auto; height: 400px;"></div>
+		<div id="stats1213" style="width: 600px; margin: auto; height: 400px;"></div>
+	</body>
+<html>
