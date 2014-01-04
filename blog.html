@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<title>Stats du blog</title>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+			google.load("visualization", "1", {packages:["corechart"]});
+			google.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+				    ['Mois', 'Visiteurs (uniques)', 'Pages Vues (uniques)', 'Billets'],
+				    ['Janvier',	 	2640, 3660, 3],
+				    ['Fevrier', 	2634, 3685, 3],
+				    ['Mars', 		2272, 3655, 1],
+				    ['Avril',		35739, 40313, 3],
+				    ['Mai', 		1891, 2651, 3],
+				    ['Juin', 		1637, 2350, 4],
+				    ['Juillet', 	1475, 2334, 6],
+				    ['Aout', 		1041, 1457, 2],
+				    ['Septembre', 	1146, 1585, 3],
+				    ['Octobre', 	1841, 2635, 4],
+				    ['Novembre', 	1575, 2181, 5],
+				    ['Decembre', 	1290, 1810, 4]
+				]);
+
+				var options = {
+					title: 'Stats 2013 du blog (blog.wikimedia.fr)',
+					vAxes: [
+						{title: 'Visiteurs/Pages', logScale: true},
+						{title: 'Billets', gridlines: { color: 'transparent' }}
+					],
+					series: [
+						{targetAxisIndex: 0},
+						{targetAxisIndex: 0},
+						{type: 'bars', targetAxisIndex: 1}
+					]
+				};
+
+				var chart = new google.visualization.LineChart(document.getElementById('stats'));
+				chart.draw(data, options);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="stats" style="width: 900px; margin: auto; height: 600px;"></div>
+		
+	</body>
+<html>
